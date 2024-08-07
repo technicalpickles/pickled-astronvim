@@ -23,13 +23,21 @@ vim.g.neovide_input_use_logo = true -- Ensure we can pass the command key
 vim.g.neovide_confirm_quit = true -- Prevent exit on unsaved buffer on window close
 vim.g.neovide_cursor_vfx_mode = "railgun"
 -- g.neovide_remember_window_size = true
+vim.g.neovide_padding_top = 0
+vim.g.neovide_padding_bottom = 0
+vim.g.neovide_padding_right = 0
+vim.g.neovide_padding_left = 0
+-- without this, winbar scrolls up when scrolling https://github.com/neovide/neovide/issues/1550
+vim.g.neovide_scroll_animation_length = 0
+
+vim.o.guifont = "DankMono Nerd Font:h16"
 
 -- { macOS convenience keybinds }--
 -- Cut/Copy/Paste to/from system clipboard
 vim.keymap.set("v", "<D-c>", '"+y')
 vim.keymap.set("v", "<D-x>", '"+c')
 vim.keymap.set("", "<D-v>", '"+p')
-vim.keymap.set("c", "<D-v>", "<C-r><C-o>+")
+vim.keymap.set("c", "<D-v>", "<keymapC-r><C-o>+")
 vim.keymap.set("i", "<D-v>", "<C-r><C-o>+")
 
 -- ⌘ s - save
@@ -40,7 +48,7 @@ vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", silent_noremap)
 vim.keymap.set("n", "<D-a>", "ggVG", silent)
 
 -- ⌘ / - close current window
-local close_command = 'bdelete'
+local close_command = "bdelete"
 -- local close_command = "lua require('superesc').close()"
 vim.keymap.set("", "<D-w>", "<cmd>" .. close_command .. "<cr>", silent)
 vim.keymap.set("i", "<D-w>", "<cmd>" .. close_command .. "<cr>", silent)

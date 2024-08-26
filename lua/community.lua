@@ -15,4 +15,5 @@ return {
   { import = "astrocommunity.completion.copilot-cmp" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.neovim-lua-development.lazydev-nvim" },
+  { import = "astrocommunity.editing-support.treesj" },
 }

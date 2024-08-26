@@ -29,4 +29,10 @@ require("lazy").setup({
       },
     },
   },
+  dev = {
+    path = "~/workspace",
+    patterns = {
+      "technicalpickles/macos.nvim",
+    },
+  },
 } --[[@as LazyConfig]])

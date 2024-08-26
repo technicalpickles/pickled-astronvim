@@ -7,6 +7,7 @@ return {
   {
     "jake-stewart/jfind.nvim",
     enabled = true,
+    -- TODO: update to 2.0
     branch = "1.0",
     opts = {
       exclude = {
@@ -107,5 +108,13 @@ return {
       npairs.add_rules(require "nvim-autopairs.rules.endwise-lua")
       npairs.add_rules(require "nvim-autopairs.rules.endwise-ruby")
     end,
+  },
+
+  {
+    -- FIXME: how to specify git source, and use dev=true?
+    dir = "~/workspace/macos.nvim/",
+    name = "macos.nvim",
+    config = function() require("macos").setup() end,
+    lazy = false,
   },
 }

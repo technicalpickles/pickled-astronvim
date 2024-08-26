@@ -32,41 +32,19 @@ vim.g.neovide_scroll_animation_length = 0
 
 vim.o.guifont = "DankMono Nerd Font:h16"
 
--- { macOS convenience keybinds }--
--- Cut/Copy/Paste to/from system clipboard
-vim.keymap.set("v", "<D-c>", '"+y')
-vim.keymap.set("v", "<D-x>", '"+c')
-vim.keymap.set("", "<D-v>", '"+p')
-vim.keymap.set("c", "<D-v>", "<keymapC-r><C-o>+")
-vim.keymap.set("i", "<D-v>", "<C-r><C-o>+")
+vim.filetype.add {
+  extension = {
+    god = "ruby",
+    rbi = "ruby",
+    rabl = "ruby",
+  },
+  filename = {
+    ["Dangerfile"] = "ruby",
+    ["Appraisals"] = "ruby",
+    ["Brewfile"] = "ruby",
+    [".pryrc"] = "ruby",
+  },
+}
 
--- ⌘ s - save
-vim.keymap.set("n", "<D-s>", ":w<CR>", silent)
-vim.keymap.set("n", "<leader>s", ":w<CR>", silent)
-vim.api.nvim_set_keymap("n", "<C-S>", ":%s/", silent_noremap)
--- ⌘ a - select all
-vim.keymap.set("n", "<D-a>", "ggVG", silent)
-
--- ⌘ / - close current window
-local close_command = "bdelete"
--- local close_command = "lua require('superesc').close()"
-vim.keymap.set("", "<D-w>", "<cmd>" .. close_command .. "<cr>", silent)
-vim.keymap.set("i", "<D-w>", "<cmd>" .. close_command .. "<cr>", silent)
-
--- Create new tab with Command-T
-vim.keymap.set("", "<D-t>", "<cmd>tabnew<cr>", silent_noremap)
-vim.keymap.set("i", "<D-t>", "<cmd>tabnew<cr>", silent_noremap)
-
--- { VS Code and other IDE like behavior }} --
--- ⌘ / - toggle comment
-vim.keymap.set("n", "<D-/>", "gcc", silent)
-vim.keymap.set("v", "<D-/>", "gc", silent)
--- ⌘ ]  - shift identation right
-vim.keymap.set("n", "<D-]>", ">>", silent)
-vim.keymap.set("v", "<D-]>", ">", silent)
-vim.keymap.set("i", "<D-]>", "<C-O>>>", silent)
-
--- ⌘ ] - shift identation left vim.keymap.set("n", "<D-[>", "<<", silent)
-vim.keymap.set("n", "<D-[>", "<<", silent)
-vim.keymap.set("v", "<D-[>", "<", silent)
-vim.keymap.set("i", "<D-[>", "<C-O><<", silent)
+-- https://github.com/nvim-treesitter/nvim-treesitter/issues/336
+vim.cmd "autocmd FileType ruby setlocal indentkeys-=."

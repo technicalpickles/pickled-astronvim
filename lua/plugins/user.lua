@@ -114,7 +114,12 @@ return {
     -- FIXME: how to specify git source, and use dev=true?
     dir = "~/workspace/macos.nvim/",
     name = "macos.nvim",
-    config = function() require("macos").setup() end,
+    config = function()
+      require("macos").setup {
+        close_command = "bdelete",
+        go_to_tab = function(tabnr) require("astrocore.buffer").nav_to(tabnr) end,
+      }
+    end,
     lazy = false,
   },
 }
